@@ -1,0 +1,80 @@
+####    Name of tree    #####
+treeName_sig="TreeMaker2/Phase2Tree"
+treeName_bkg="TreeMaker2/Phase2Tree"
+treeName_data="TreeMaker2/Phase2Tree"
+#
+fileLocation_sig="/eos/uscms/store/user/bmahakud/TDRJetSubstructure_v1/"
+fileLocation_bkg="/eos/uscms/store/user/bmahakud/TDRJetSubstructure_v2/"
+fileLocation_data="/eos/uscms/store/user/bmahakud/TDRJetSubstructure_v2/"
+#
+####incase you are putting xrootrd path below put the filelocation above without xrootdpath
+store_mc_sig = "root://cmseos.fnal.gov//store/user/bmahakud/TDRJetSubstructure_v1/"
+store_mc_bkg = "root://cmseos.fnal.gov//store/user/bmahakud/TDRJetSubstructure_v2/"
+store_data = "root://cmseos.fnal.gov//store/user/bmahakud/TDRJetSubstructure_v2/"
+#
+#
+#####    Name of samples #####
+#
+#
+list_mc_sig = ["AODSIM2023.TTToSemiLepton_TuneCUETP8M1_14TeV-powheg-pythia8_NoPU_AODSIM*_.root","AODSIM2023.TTToSemiLepton_TuneCUETP8M1_14TeV-powheg-pythia8_PU140_AODSIM*_.root"]
+list_mc_sigNames =["TTToSemiLeptonNoPU","TTToSemiLeptonPU140"]
+sig_cuts=[]
+list_mc_sigNames_cuts ={"TTToSemiLeptonNoPU":[],"TTToSemiLeptonPU140":[]}
+
+#
+#
+#
+list_mc_bkg = ["AODSIM2023.QCD_Flat_Pt-15to7000_TuneCUETP8M1_14TeV_pythia8_PU200_AODSIM*_.root","MINIAODSIM2017.QCD_Pt-15to7000_TuneCUETP8M1_FlatP6_13TeV_pythia*_.root"]
+list_mc_bkgNames = ["QCD200","QCD20"]
+bkg_cuts=[]
+list_mc_bkgNames_cuts ={"QCD200":bkg_cuts,"QCD20":[]}
+
+#
+#
+#
+list_data = ["AODSIM2023.QCD_Flat_Pt-15to7000_TuneCUETP8M1_14TeV_pythia8_PU200_AODSIM*_.root"]
+list_dataNames = ["QCDdata"]
+data_cuts=[]
+list_dataNames_cuts ={"QCDdata":[]}
+
+
+
+#double and integer values
+#one value per event type variables, names should be same as exactly in the tree , code wll create histograms for these
+list_oneVariables=["PFPuppiTrimmedJetMass","PFPuppiPrunedJetMass","PFPuppiSoftdropJetMass","PFPuppiTau2Tau1","PFPuppiTau3Tau1","PFPuppiTau3Tau2"]
+#,"PFPuppiTau2Tau1","PFPuppiTau3Tau1","PFPuppiTau3Tau2"]
+list_VarsFill=["AK8PFPuppirimmedMass->at(0)","AK8PFPuppiPrunedMass->at(0)","AK8PFPuppiSoftdropMass->at(0)","AK8PFPuppitau2->at(0)/read.AK8PFPuppitau1->at(0)","AK8PFPuppitau3->at(0)/read.AK8PFPuppitau1->at(0)","AK8PFPuppitau3->at(0)/read.AK8PFPuppitau2->at(0)"]
+list_Baseline_cuts=["AK8PFPuppiJets->size()>0 && ","AK8PFPuppirimmedMass->at(0)>0 && ","AK8PFPuppiPrunedMass->at(0)>0 && ","AK8PFPuppiSoftdropMass->at(0)>0 && ","AK8PFPuppiJets->at(0).Pt()>500.0 && ","AK8PFPuppitau1->at(0)>0 && ","AK8PFPuppitau2->at(0)>0 &&","AK8PFPuppitau3->at(0)"]
+list_Categories =["pTbin1","pTbin2","pTbin3","pTbin4"];
+
+#list_cutCombinationsHist =["","Barrel","Endcap"];
+
+#Vars_With_diffCuts ={"HT":[["",""],[]],"MHT":[[],[]],"NJets":[[],[]],"BTags":[[],[]],"DeltaPhi1":[[],[]],"LeadJetPt":[["Barrel","Endcap"],["Jets->at(0).Eta()<1.44","Jets->at(0).Eta()>1.44"]]}
+
+
+list_PFJetMass_range=[0,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600,610,620,630,640,650]
+
+
+list_PFPuppiTrimmedJetMass_range=list_PFJetMass_range
+list_PFPuppiPrunedJetMass_range=list_PFJetMass_range
+list_PFPuppiSoftdropJetMass_range=list_PFJetMass_range
+
+list_PFCHSTau2Tau1_range=[0.00,0.02,0.04,0.06,0.08,0.1,0.12,0.14,0.16,0.18,0.2,0.22,0.24,0.26,0.28,0.3,0.32,0.34,0.36,0.38,0.4,0.42,0.44,0.46,0.48,0.5,0.52,0.54,0.56,0.58,0.6,0.62,0.64,0.66,0.68,0.7,0.72,0.74,0.76,0.78,0.8,0.82,0.84,0.86,0.88,0.9,0.92,0.94,0.96,0.98,1.0]
+
+
+list_PFPuppiTau2Tau1_range=list_PFCHSTau2Tau1_range
+list_PFPuppiTau3Tau1_range=list_PFCHSTau2Tau1_range
+list_PFPuppiTau3Tau2_range=list_PFCHSTau2Tau1_range
+
+
+
+
+
+
+
+
+
+
+
+
+
